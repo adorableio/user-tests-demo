@@ -11,8 +11,8 @@ function prepare_app() {
     if [ "$1" = "$TRIGGERING_REPO" ]; then
     echo "\n#################################################"
     echo "repo-name: ${1}"
-    echo "triggered-repo: ${TRIGGERING_REPO}"
-      [[ -z "$TRIGGERING_SHA" ]] && BRANCH_OR_SHA=$TRIGGERING_SHA
+    echo "triggered-repo: ${TRIGGERING_SHA}"
+      [[ -n "$TRIGGERING_SHA" ]] && BRANCH_OR_SHA=$TRIGGERING_SHA
       echo "branch-or-sha: ${BRANCH_OR_SHA}"
     fi
     git checkout .
