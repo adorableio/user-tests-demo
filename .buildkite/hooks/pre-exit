@@ -1,6 +1,9 @@
 #!/bin/bash
 
-source ".buildkite/shared_functions"
+echo "command: $BUILDKITE_COMMAND"
 
-kill_port 3000
-kill_port 3002
+# if [ "$BUILDKITE_COMMAND" = "buildkite-agent pipeline upload" ] ; then
+# source ".buildkite/shared_functions"
+
+# kill_port 3000
+# kill_port 3002
