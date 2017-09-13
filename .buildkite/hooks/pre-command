@@ -11,6 +11,8 @@ if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   echo "after brew install nvm"
   source $NVM_SH_PATH
   echo "after source nvm"
+  nvm debug
+  echo "----"
   nvm ls
   echo "----"
   nvm ls-remote 8
