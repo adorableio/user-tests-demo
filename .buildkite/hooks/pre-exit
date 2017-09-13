@@ -1,6 +1,8 @@
 #!/bin/bash
 
-source ".buildkite/shared_functions"
+if [ "$BUILDKITE_COMMAND" = ".buildkite/run_cypress_tests.sh" ] ; then
+  source ".buildkite/shared_functions"
 
-kill_port 3000
-kill_port 3002
+  kill_port 3000
+  kill_port 3002
+fi
