@@ -1,12 +1,12 @@
 steps:
   - label: setup apps
     command:
-      - "pwd && cd ../ && pwd"
-      - "pwd"
-      - "cd ../ && [[ ! -d \"buildkite-demo-server\" ]] && git clone git@github.com:adorableio/buildkite-demo-client.git"
-      - "cd ../ && [[ ! -d \"buildkite-demo-server\" ]] && git clone git@github.com:adorableio/buildkite-demo-server.git"
-      - "cd ../buildkite-demo-client && npm install"
-      - "cd ../buildkite-demo-server && npm install"
+      - pushd ../
+      - "[[ ! -d \"buildkite-demo-server\" ]] && git clone git@github.com:adorableio/buildkite-demo-client.git"
+      - "[[ ! -d \"buildkite-demo-server\" ]] && git clone git@github.com:adorableio/buildkite-demo-server.git"
+      - cd buildkite-demo-client && npm install
+      - cd buildkite-demo-server && npm install
+      - popd
 
   - label: npm install
     command: npm install
