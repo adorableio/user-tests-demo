@@ -24,4 +24,4 @@ npm run test
 echo "tests finished, stopping servers"
 kill_port 3000
 kill_port 3002
-kill "${NPM_SERVER_PID}""
+kill "${NPM_SERVER_PID}"
