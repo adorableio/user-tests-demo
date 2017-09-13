@@ -1,0 +1,13 @@
+#!/bin/bash
+
+set -eu
+
+if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
+  export MANPATH=/usr/share/man
+  source ~/.nvm/nvm.sh
+  nvm install 7.10.1
+  nvm use 7.10.1
+fi
+
+export CURRENT_TAG=$(git describe --tags --abbrev=0)
+echo "Current tag is: $CURRENT_TAG"
