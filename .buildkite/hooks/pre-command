@@ -3,8 +3,9 @@
 set -eu
 
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
-  brew install nvm
-  source /usr/local/opt/nvm/nvm.sh
+  local NVM_SH_PATH="/usr/local/opt/nvm/nvm.sh"
+  [[ ! -f "$NVM_SH_PATH" ]] && brew install nvm
+  source $NVM_SH_PATH
   nvm install 8.4.0
   nvm use 8.4.0
 fi
