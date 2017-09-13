@@ -1,19 +1,11 @@
 #!/bin/bash
 
-set -eu
-
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   export NVM_DIR="$HOME/.nvm"
   if [ ! -s "$NVM_DIR/nvm.sh" ]; then
     curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
   fi
-  echo "before source"
   source "$NVM_DIR/nvm.sh" # This loads nvm
-  echo "after source"
-  nvm ls-remote
   nvm install 8.4
-  echo "after install"
   nvm use 8.4
 fi
-
-echo "done"
