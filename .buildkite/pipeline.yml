@@ -10,5 +10,4 @@ steps:
 
   - label: cypress tests
     command:
-      - npm start
-      - $(npm bin)/cypress run
+      - .buildkite/run_cypress_tests.sh
