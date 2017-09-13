@@ -4,7 +4,7 @@ source ".buildkite/shared_functions"
 
 function wait_for_port() {
   local port="$1"
-  while ! nc localhost "${port}"; do
+  while lsof -i tcp:"${port}" > /dev/null; do
     echo "waiting for ${port}"
     sleep 1
   done
