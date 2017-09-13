@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "start": "concurrently --names=\"client,server\" --prefix-colors=\"green,blue\" \"npm run start:client\" \"npm run start:server\"",
-    "start:client": "pushd ../client && npm start",
-    "start:server": "pushd ../server && npm start",
+    "start:client": "pushd ../buildkite-demo-client && npm start",
+    "start:server": "pushd ../buildkite-demo-server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
