@@ -1,0 +1,18 @@
+#!/usr/bin/env ruby
+require 'yaml'
+
+def replace_envs(yaml)
+ case yaml
+ when Hash
+   yaml.map { |k, v| [k, replace_envs(v)] }.to_h
+ when Array
+   yaml.map { |e| replace_envs e }
+ when String
+   yaml.gsub(/\$\{([^}]*)\}/) { ENV.fetch $1 }
+ else
+   yaml
+ end
+end
+
+pipeline_file = ARGV[0] || File.expand_path("pipeline.yml", __dir__)
+puts YAML.dump replace_envs YAML.load File.read pipeline_file
