@@ -9,6 +9,3 @@ if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   nvm install 8.4.0
   nvm use 8.4.0
 fi
-
-export CURRENT_TAG=$(git describe --tags --abbrev=0 || echo master)
-echo "Current tag is: $CURRENT_TAG"
