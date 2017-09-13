@@ -3,11 +3,10 @@
 set -eu
 
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
-  export MANPATH=/usr/share/man
   brew install nvm
-  source ~/.nvm/nvm.sh
-  nvm install 7.10.1
-  nvm use 7.10.1
+  source /usr/local/opt/nvm/nvm.sh
+  nvm install 8.4.0
+  nvm use 8.4.0
 fi
 
 export CURRENT_TAG=$(git describe --tags --abbrev=0)
