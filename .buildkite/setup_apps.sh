@@ -11,7 +11,7 @@ function prepare_app() {
 
   local BRANCH="master"
   pushd $1
-    if [ $1 = $CURRENT_APP]; then
+    if [ $1 = $CURRENT_APP ]; then
       [[ -z "$CURRENT_SHA" ]] && BRANCH=$CURRENT_SHA
     fi
     git checkout .
