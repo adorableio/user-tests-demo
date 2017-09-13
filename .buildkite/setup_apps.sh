@@ -14,6 +14,7 @@ function prepare_app() {
     if [ $1 = $CURRENT_APP]; then
       [[ -z "$CURRENT_SHA" ]] && BRANCH=$CURRENT_SHA
     fi
+    git checkout .
     git checkout $BRANCH
     git pull
     npm install
