@@ -17,4 +17,4 @@ while ! nc localhost 3002; do
 done
 
 echo "server started"
-$(npm bin)/cypress run
+npm run test

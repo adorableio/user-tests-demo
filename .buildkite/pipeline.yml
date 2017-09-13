@@ -1,7 +1,6 @@
 steps:
   - label: setup apps
-    command:
-      - .buildkite/setup_apps.sh
+    command: .buildkite/setup_apps.sh
 
   - label: npm install
     command: npm install
@@ -9,5 +8,4 @@ steps:
   - wait
 
   - label: cypress tests
-    command:
-      - .buildkite/run_cypress_tests.sh
+    command: .buildkite/run_cypress_tests.sh
