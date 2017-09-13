@@ -16,7 +16,7 @@ function prepare_app() {
       echo "branch-or-sha: ${BRANCH_OR_SHA}"
     fi
     git checkout .
-    git fetch -a
+    git fetch
     echo "\nchecking out ${BRANCH_OR_SHA}"
     git checkout $BRANCH_OR_SHA
     echo "pulling latest"
