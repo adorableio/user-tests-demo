@@ -2,10 +2,18 @@
 
 set -eu
 
+echo "before if"
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
+  echo "inside if"
   local NVM_SH_PATH="/usr/local/opt/nvm/nvm.sh"
+  echo "NVM_SH_PATH: ${NVM_SH_PATH}"
   [[ ! -f "$NVM_SH_PATH" ]] && brew install nvm
+  echo "after brew install nvm"
   source $NVM_SH_PATH
+  echo "after source nvm"
+  nvm help
   nvm install 8.4.0
+  echo "after nvm install"
   nvm use 8.4.0
+  echo "after nvm use"
 fi
