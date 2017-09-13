@@ -5,13 +5,26 @@ function kill_port() {
   lsof -i tcp:${1} | awk 'NR!=1 {print $2}' | xargs kill
 }
 
+function prepare_app() {
+  # If the directory doesn't exist, clone it
+  [[ ! -d "$1" ]] && git clone git@github.com:adorableio/$1.git
+
+  local BRANCH = "master"
+  pushd $1
+    if [ $1 = $CURRENT_APP]; then
+      [[ -z "$CURRENT_TAG" ]] && BRANCH=$CURRENT_TAG
+    fi
+    git checkout $BRANCH
+    git pull
+    npm install
+  popd
+}
+
 echo $PWD
 pushd ../
+  # make sure there are no hanging servers from previous build
   kill_port 3000
   kill_port 3002
-  # make sure there are no hanging servers from previous build
-  # "[[ ! -d \"buildkite-demo-client\" ]] && git clone git@github.com:adorableio/buildkite-demo-client.git"
-  # "[[ ! -d \"buildkite-demo-server\" ]] && git clone git@github.com:adorableio/buildkite-demo-server.git"
-  # (cd buildkite-demo-client && npm install)
-  # (cd buildkite-demo-server && npm install)
+  prepare_app buildkite-demo-client
+  prepare_app buildkite-demo-server
 popd
