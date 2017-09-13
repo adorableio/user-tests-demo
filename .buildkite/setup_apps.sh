@@ -6,13 +6,13 @@ function prepare_app() {
   # If the directory doesn't exist, clone it
   [[ ! -d "$1" ]] && git clone git@github.com:adorableio/$1.git
 
-  local BRANCH="master"
+  local BRANCH_OR_SHA="master"
   pushd $1
-    if [ "$1" = "$CURRENT_APP" ]; then
-      [[ -z "$CURRENT_SHA" ]] && BRANCH=$CURRENT_SHA
+    if [ "$1" = "$TRIGGERING_REPO" ]; then
+      [[ -z "$TRIGGERING_SHA" ]] && BRANCH_OR_SHA=$TRIGGERING_SHA
     fi
     git checkout .
-    git checkout $BRANCH
+    git checkout $BRANCH_OR_SHA
     git pull
     npm install
   popd
