@@ -1,6 +1,6 @@
 #!/bin/sh
 
-source ./shared_functions
+source ".buildkite/shared_functions"
 
 function prepare_app() {
   # If the directory doesn't exist, clone it

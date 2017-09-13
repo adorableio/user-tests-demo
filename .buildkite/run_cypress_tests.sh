@@ -1,6 +1,7 @@
 #!/bin/sh
 
-source ./shared_functions
+source ".buildkite/shared_functions"
+
 function wait_for_port() {
   local port="$1"
   while ! nc localhost "${port}"; do
