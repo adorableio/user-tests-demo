@@ -9,5 +9,10 @@ while ! nc localhost 3000; do
   sleep 1
 done
 
+# wait for port 3002 to be bound
+while ! nc localhost 3002; do
+  sleep 1
+done
+
 echo "server started"
 $(npm bin)/cypress run
