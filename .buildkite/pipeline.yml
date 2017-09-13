@@ -6,8 +6,11 @@ steps:
 
   - label: setup apps
     command:
+      - pwd
       - cd ../ && git clone git@github.com:adorableio/buildkite-demo-client.git
+      - pwd
       - cd ../ && git clone git@github.com:adorableio/buildkite-demo-server.git
+      - pwd
       - cd ../client && npm install
       - cd ../server && npm install
 
