@@ -10,7 +10,7 @@ if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   echo "before source"
   source "$NVM_DIR/nvm.sh" # This loads nvm
   echo "after source"
-  type nvm
+  nvm ls
   nvm install 8.4
   echo "after install"
   nvm use 8.4
