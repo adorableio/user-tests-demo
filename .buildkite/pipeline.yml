@@ -1,17 +1,11 @@
 steps:
   - label: setup apps
     command: .buildkite/setup_apps.sh
-    agents:
-      queue: "demo"
 
   - label: npm install
     command: npm install
-    agents:
-      queue: "demo"
 
   - wait
 
   - label: cypress tests
     command: .buildkite/run_cypress_tests.sh
-    agents:
-      queue: "demo"
