@@ -2,11 +2,12 @@
 
 set -eu
 
-echo "before if"
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   curl -o- https://raw.githubusercontent.com/creationix/nvm/v0.33.4/install.sh | bash
   export NVM_DIR="$HOME/.nvm"
-  [ -s "$NVM_DIR/nvm.sh" ] && . "$NVM_DIR/nvm.sh" # This loads nvm
+  [ -s "$NVM_DIR/nvm.sh" ] && source "$NVM_DIR/nvm.sh" # This loads nvm
   nvm install 8.4
   nvm use 8.4
 fi
+
+echo "done"
