@@ -6,6 +6,7 @@ echo "before if"
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   echo "inside if"
   export NVM_DIR="$HOME/.nvm"
+  mkdir -p $NVM_DIR
   local NVM_SH_PATH="/usr/local/opt/nvm/nvm.sh"
   echo "NVM_SH_PATH: ${NVM_SH_PATH}"
   [[ ! -f "$NVM_SH_PATH" ]] && brew install nvm
