@@ -4,5 +4,18 @@ steps:
 
   - wait
 
+  - label: setup apps
+    command:
+      - cd ../ && git clone git@github.com:adorableio/buildkite-demo-client.git
+      - cd ../ && git clone git@github.com:adorableio/buildkite-demo-server.git
+      - cd ../client && npm install
+      - cd ../server && npm install
+
+  - wait
+
+  - wait
+
   - label: cypress tests
-    command: $(npm bin)/cypress run
+    command:
+      - npm start
+      - $(npm bin)/cypress run

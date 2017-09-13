@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
+    "start": "concurrently --names=\"client,server\" --prefix-colors=\"green,blue\" \"npm run start:client\" \"npm run start:server\"",
+    "start:client": "pushd ../client && npm start",
+    "start:server": "pushd ../server && npm start",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "concurrently": "^3.5.0",
     "cypress": "^0.20.0"
   }
 }
