@@ -1,9 +1,4 @@
 steps:
-  - label: npm install
-    command: npm install
-
-  - wait
-
   - label: setup apps
     command:
       - pwd
@@ -14,7 +9,8 @@ steps:
       - cd ../client && npm install
       - cd ../server && npm install
 
-  - wait
+  - label: npm install
+    command: npm install
 
   - wait
 
