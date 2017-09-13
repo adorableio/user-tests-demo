@@ -9,7 +9,7 @@ function prepare_app() {
   # If the directory doesn't exist, clone it
   [[ ! -d "$1" ]] && git clone git@github.com:adorableio/$1.git
 
-  local BRANCH = "master"
+  local BRANCH="master"
   pushd $1
     if [ $1 = $CURRENT_APP]; then
       [[ -z "$CURRENT_SHA" ]] && BRANCH=$CURRENT_SHA
