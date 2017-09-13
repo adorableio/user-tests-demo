@@ -4,6 +4,7 @@ set -eu
 
 if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   export MANPATH=/usr/share/man
+  brew install nvm
   source ~/.nvm/nvm.sh
   nvm install 7.10.1
   nvm use 7.10.1
