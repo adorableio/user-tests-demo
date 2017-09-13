@@ -1,20 +1,26 @@
 #!/bin/sh
 
+source ./shared_functions
+function wait_for_port() {
+  local port="$1"
+  while ! nc localhost "${port}"; do
+    echo "waiting for ${port}"
+    sleep 1
+  done
+}
+
 # run the server in the background
 npm start &
 NPM_SERVER_PID="$!"
 
-# wait for port 3000 to be bound
-while ! nc localhost 3000; do
-  echo "waiting for 3000"
-  sleep 1
-done
+echo "waiting for servers to start..."
+wait_for_port 3000
+wait_for_port 3002
 
-# wait for port 3002 to be bound
-while ! nc localhost 3002; do
-  echo "waiting for 3002"
-  sleep 1
-done
-
-echo "server started"
+echo "servers started, running tests"
 npm run test
+
+echo "tests finished, stopping servers"
+kill_port 3000
+kill_port 3002
+kill "${NPM_SERVER_PID}""

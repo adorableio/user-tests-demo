@@ -1,9 +1,6 @@
 #!/bin/sh
 
-
-function kill_port() {
-  lsof -i tcp:${1} | awk 'NR!=1 {print $2}' | xargs kill
-}
+source ./shared_functions
 
 function prepare_app() {
   # If the directory doesn't exist, clone it
