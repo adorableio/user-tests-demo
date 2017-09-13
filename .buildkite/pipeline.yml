@@ -1,6 +1,8 @@
 steps:
   - label: setup apps
-    command: .buildkite/setup_apps.sh
+    command:
+      - "echo \"PWD: $PWD\""
+      - .buildkite/setup_apps.sh
 
   - label: npm install
     command: npm install
