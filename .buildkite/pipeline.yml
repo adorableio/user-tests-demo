@@ -1,0 +1,8 @@
+steps:
+  - label: npm install
+    command: npm install
+
+  - wait
+
+  - label: cypress tests
+    command: $(npm bin)/cypress run
