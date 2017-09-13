@@ -11,9 +11,11 @@ if [ "$BUILDKITE_COMMAND" != "buildkite-agent pipeline upload" ] ; then
   echo "after brew install nvm"
   source $NVM_SH_PATH
   echo "after source nvm"
-  nvm help
-  nvm install 8.4.0
+  nvm ls
+  echo "----"
+  nvm ls-remote 8
+  nvm install 8.4
   echo "after nvm install"
-  nvm use 8.4.0
+  nvm use 8.4
   echo "after nvm use"
 fi
