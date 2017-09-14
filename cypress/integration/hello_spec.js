@@ -6,6 +6,13 @@ describe('Hello world', function () {
     cy.contains('h2', 'Home')
     cy.contains('li', 'Home')
     cy.contains('li', 'Foo')
+
+    cy.contains('button', 'Get Content')
+      .click()
+
+    cy.contains('.content', 'name: nauto')
+    cy.contains('.content', 'description: awesome')
+    cy.contains('.content', 'updated_at: 2017-09-13T23:11:23.912Z')
   });
 
   it('should navigate to the Foo page', function () {
